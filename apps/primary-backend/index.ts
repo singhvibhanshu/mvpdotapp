@@ -6,7 +6,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.post("/project", async(req, res) => {
+app.post("/project", async (req, res) => {
     const { prompt } = req.body;
     const userId = req.userId;
     const description = prompt.split("\n")[0];
@@ -16,7 +16,7 @@ app.post("/project", async(req, res) => {
     res.json({ projectId: project.id });
 });
 
-app.get("/projects", async(req, res) => {
+app.get("/projects", async (req, res) => {
     const userId = req.userId;
     const project = await primsaClient.project.findUnique({
         where: { userId },
